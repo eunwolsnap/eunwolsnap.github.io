@@ -38,7 +38,7 @@ img{display:block;max-width:100%;height:auto}
 .bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg)}
 .bar .wrap{display:grid;grid-template-columns:44px 1fr 44px;align-items:center;height:64px;max-width:1080px;padding-left:max(12px,env(safe-area-inset-left,0px));padding-right:max(12px,env(safe-area-inset-right,0px))}
 .logo{justify-self:center;display:block;line-height:0}
-.logo img{height:22px;width:auto}
+.logo img{height:22px;width:auto} .logo.mono{font-family:var(--en);font-weight:200;font-size:17px;line-height:1;letter-spacing:.22em;margin-right:-.22em;color:var(--ink);text-decoration:none}
 .icon-btn{width:44px;height:44px;display:grid;place-items:center;background:none;border:0;color:var(--ink);cursor:pointer;padding:0;text-decoration:none}
 .icon-btn svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.1}
 a:focus-visible,button:focus-visible,summary:focus-visible{outline:1px solid var(--ink);outline-offset:3px}
@@ -214,7 +214,7 @@ footer small{font-family:var(--en);font-size:12px;margin-top:10px}
 <header class="bar">
   <div class="wrap">
     <button class="icon-btn" type="button" id="openMenu" aria-label="메뉴 열기"><svg viewBox="0 0 24 24"><path d="M3 7h18M3 12h18M3 17h18"/></svg></button>
-    <a class="logo" href="#home" aria-label="은월스냅 처음으로"><img src="img/logo.png" alt="eunwol" width="340" height="94"></a>
+    <a class="logo mono" href="#home" aria-label="은월스냅 처음으로">EW</a>
     <a class="icon-btn" href="https://pf.kakao.com/_jyxnAX/chat" target="_blank" rel="noopener" aria-label="카카오톡 상담 채널"><svg viewBox="0 0 24 24"><path d="M12 4.5c-4.97 0-9 3.13-9 7 0 2.45 1.62 4.6 4.07 5.86L6.3 20l3.48-2.18c.72.12 1.45.18 2.22.18 4.97 0 9-3.13 9-7s-4.03-6.5-9-6.5z"/></svg></a>
   </div>
 </header>
