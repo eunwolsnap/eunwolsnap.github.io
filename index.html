@@ -1,0 +1,454 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Eunwol Snap</title>
+<link rel="artifact-thumbnail" href="thumb.png">
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="color-scheme" content="light">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400&family=Noto+Sans+KR:wght@300;400&display=swap">
+<style>
+/* White page, near-black ink, one thin sans for English (Inter 200/300, never italic),
+   light Korean beneath it. Left-aligned editorial headings like "Archive." on the reference. */
+:root{
+  --bg:#FFFFFF; --ink:#121212; --muted:#7A7A7A; --line:#E6E6E6; --hush:#BDBDBD;
+  --en:"Inter", "Helvetica Neue", Arial, sans-serif;
+  --body:"Inter", "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+  --col:720px; color-scheme:light;
+}
+/* 흰 배경·검정 글씨를 기기 다크모드와 상관없이 그대로 유지 */
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#FFFFFF;--ink:#121212;--muted:#7A7A7A;--line:#E6E6E6;--hush:#BDBDBD}}
+:root[data-theme="dark"]{--bg:#FFFFFF;--ink:#121212;--muted:#7A7A7A;--line:#E6E6E6;--hush:#BDBDBD}
+*{box-sizing:border-box;font-style:normal}
+[hidden]{display:none !important}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-weight:300;font-size:16px;line-height:1.9;letter-spacing:-.01em;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--bg)}
+a{color:inherit}
+img{display:block;max-width:100%;height:auto}
+.wrap{max-width:var(--col);margin:0 auto;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}
+
+/* top bar */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg)}
+.bar .wrap{display:grid;grid-template-columns:44px 1fr 44px;align-items:center;height:64px;max-width:1080px;padding-left:max(12px,env(safe-area-inset-left,0px));padding-right:max(12px,env(safe-area-inset-right,0px))}
+.logo{justify-self:center;display:block;line-height:0}
+.logo img{height:22px;width:auto}
+.icon-btn{width:44px;height:44px;display:grid;place-items:center;background:none;border:0;color:var(--ink);cursor:pointer;padding:0;text-decoration:none}
+.icon-btn svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.1}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:1px solid var(--ink);outline-offset:3px}
+
+/* drawer menu (left, like the reference) */
+.scrim{position:fixed;inset:0;z-index:39;background:rgba(0,0,0,.42)}
+.drawer{position:fixed;inset:0 auto 0 0;width:min(82vw,360px);z-index:40;background:var(--bg);padding:calc(18px + env(safe-area-inset-top,0px)) 28px 40px;padding-left:max(28px,env(safe-area-inset-left,0px));overflow-y:auto;animation:slide .28s ease both}
+@keyframes slide{from{transform:translateX(-100%)}to{transform:none}}
+.drawer .close{position:absolute;top:calc(10px + env(safe-area-inset-top,0px));right:12px}
+.drawer nav{margin-top:52px;display:grid;gap:4px}
+.drawer nav > a,.drawer summary{display:flex;justify-content:space-between;align-items:center;font-family:var(--en);font-weight:300;font-size:22px;letter-spacing:-.01em;text-decoration:none;padding:8px 0;cursor:pointer;list-style:none}
+.drawer summary::-webkit-details-marker{display:none}
+.drawer summary svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1;transition:transform .2s}
+.drawer details[open] summary svg{transform:rotate(180deg)}
+.drawer .subs{display:grid;padding:2px 0 10px}
+.drawer .subs a{text-decoration:none;font-size:15px;color:var(--muted);padding:5px 0}
+.drawer .subs a:hover{color:var(--ink)}
+
+/* type */
+h1,h2{font-family:var(--en);font-weight:300;letter-spacing:-.035em;margin:0;line-height:1.05}
+h1{font-size:clamp(52px,14vw,88px)}
+h2{font-size:clamp(44px,11vw,68px)}
+.head{padding-block:40px 36px}
+.lede{margin:28px 0 0;font-size:16px;line-height:1.95}
+.lede + .lede{margin-top:22px}
+.copy{font-family:var(--en);font-weight:300;font-size:11px;letter-spacing:.01em;color:var(--hush);margin:18px 0 0}
+.tier .n small{display:block !important;font-weight:300;font-size:12px;color:var(--muted);margin:2px 0 0;letter-spacing:0;line-height:1.5}
+.tier .p{grid-row:1 / span 2;align-self:start;text-align:right;line-height:1.6}
+.tier .p small{display:block;font-size:12px;color:var(--muted);letter-spacing:0}
+.tier li{padding:16px 0;row-gap:0}
+.tier .d{line-height:1.7}
+.inc .only{display:block;font-size:12px;color:var(--muted);line-height:1.5;margin-bottom:2px}
+.promise{margin:22px 0 0;padding:16px 0 0;border-top:1px solid var(--line)}
+.promise p{margin:0;font-size:clamp(9.5px,2.75vw,12px);letter-spacing:-.03em;white-space:nowrap;color:var(--muted);line-height:1.8}
+.tier > li{display:block;padding:0}
+.tier details > summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:1fr auto 20px;gap:0 12px;padding:16px 0;align-items:start}
+.tier summary::-webkit-details-marker{display:none}
+.tier summary .n{grid-column:1}
+.tier summary .d{grid-column:1;grid-row:2}
+.tier summary .p{grid-column:2;grid-row:1 / span 2}
+.tier summary .chev{grid-column:3;grid-row:1;width:18px;height:18px;margin-top:4px;stroke:var(--ink);fill:none;stroke-width:1.2;transition:transform .25s}
+.tier details[open] .chev{transform:rotate(180deg)}
+.pd{padding:4px 0 26px}
+.pd .sub{margin-top:18px}
+.pd .sub:first-child{margin-top:4px}
+.pd .promise{margin-top:14px}
+.hint{font-size:12px;color:var(--muted);margin:14px 0 0}
+.pd .inc li{display:list-item;padding:0;border:0;font-size:14px;line-height:1.9}
+.pd .rows li{display:grid;padding:9px 0}
+.tier .n small{display:inline-block;white-space:nowrap}
+.tier summary:hover .n{opacity:.7}
+.navlist .arr svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1;display:block}
+.soon{display:inline-block;margin-left:8px;padding:0 7px;border:1px solid var(--ink);font-size:11px;line-height:18px;font-weight:400;vertical-align:2px;letter-spacing:0}
+.mini{font-size:12px;color:var(--muted);margin-left:8px;white-space:nowrap}
+.pf-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:26px 0 14px;flex-wrap:wrap}
+.pf-en{font-family:var(--en);font-weight:300;font-size:22px;letter-spacing:-.02em}
+.pf-note{font-size:12px;color:var(--muted)}
+.pf-set{padding:34px 0 8px;border-top:1px solid var(--line)}
+.pf-set:first-child{border-top:0}
+.pf-set-t{font-family:var(--en);font-weight:300;font-size:20px;letter-spacing:-.01em;margin:0;line-height:1.3;word-break:keep-all}
+.pf-set .alb-s{margin:4px 0 18px}
+.pf-one{margin:0 0 12px}
+.pf-one img{width:100%;height:auto;display:block;background:#f3f3f3}
+.alb-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 12px;padding-top:22px}
+@media (min-width:720px){.alb-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (min-width:1000px){.alb-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.alb{display:block;text-decoration:none;color:var(--ink);cursor:zoom-in}
+@media (min-width:1000px){#v-portfolio .wrap{max-width:1200px}}
+.alb-cv{aspect-ratio:3/4;overflow:hidden;background:#f3f3f3}
+.alb-cv img{width:100%;height:100%;object-fit:cover;display:block;transition:opacity .3s}
+.alb:hover .alb-cv img{opacity:.85}
+.alb-t{display:block;font-size:14px;font-weight:400;margin-top:10px;line-height:1.4;word-break:keep-all}
+.alb-s{display:block;font-family:var(--en);font-size:12px;color:var(--muted);margin-top:3px;font-weight:300}
+.alb-back{background:none;border:0;padding:20px 0 0;font:inherit;font-size:13px;color:var(--muted);cursor:pointer}
+.alb-more{display:block;margin:18px 0 0}
+.alb-head{padding:18px 0 18px}
+.alb-ht{font-size:20px;font-weight:300;margin:0;letter-spacing:-.01em;word-break:keep-all}
+.alb-head .alb-s{margin-top:6px}
+.pf-hero{margin:0 0 10px;cursor:zoom-in}
+.pf-hero img{width:100%;height:auto;display:block}
+.pf-grid{columns:2;column-gap:10px}
+@media (min-width:720px){.pf-grid{columns:3}}
+.pf-item{margin:0 0 10px;break-inside:avoid;cursor:zoom-in}
+.pf-item img{width:100%;height:auto;display:block;background:#f3f3f3}
+.lb{position:fixed;inset:0;z-index:60;background:#fff;display:flex;align-items:center;justify-content:center;padding:calc(56px + env(safe-area-inset-top,0px)) 12px calc(24px + env(safe-area-inset-bottom,0px))}
+.lb img{max-width:100%;max-height:100%;object-fit:contain}
+.lb button{position:absolute;background:none;border:0;color:var(--ink);width:44px;height:44px;display:grid;place-items:center;cursor:pointer}
+.lb svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.1}
+.lb-x{top:calc(8px + env(safe-area-inset-top,0px));right:8px}
+.lb-prev{left:4px;top:50%;transform:translateY(-50%)}
+.lb-next{right:4px;top:50%;transform:translateY(-50%)}
+.label{font-family:var(--en);font-weight:400;font-size:13px;letter-spacing:.02em;color:var(--muted);margin:0}
+
+/* home */
+.hero{padding-block:8px 0}
+.hero img{width:100%;aspect-ratio:2/3;object-fit:cover}
+.since{font-family:var(--en);font-weight:300;font-size:clamp(26px,6vw,34px);letter-spacing:-.02em;line-height:1.2;margin:0 0 18px}
+.index{padding-block:72px 0}
+.navlist{list-style:none;margin:14px 0 0;padding:0;border-top:1px solid var(--ink)}
+.navlist li{border-bottom:1px solid var(--line)}
+.navlist a{display:grid;grid-template-columns:1fr auto;align-items:baseline;gap:0 16px;padding:18px 0;text-decoration:none}
+.navlist .en{font-family:var(--en);font-weight:300;font-size:clamp(22px,5.5vw,28px);letter-spacing:-.02em}
+.navlist .ko{font-size:14px;color:var(--muted);grid-column:1}
+.navlist .arr{grid-row:1 / span 2;grid-column:2;align-self:center;font-family:var(--en);font-weight:200;font-size:22px;transition:transform .25s}
+.navlist a:hover .arr{transform:translateX(4px)}
+
+/* portfolio */
+.tabs{display:flex;gap:6px 24px;flex-wrap:wrap;border-bottom:1px solid var(--line);margin-bottom:0}
+.tabs button{font:inherit;font-size:15px;background:none;border:0;color:var(--muted);padding:10px 0 14px;cursor:pointer;border-bottom:1px solid transparent;margin-bottom:-1px}
+.tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--ink);font-weight:400}
+.empty{color:var(--muted);padding:88px 0;text-align:center;border-bottom:1px solid var(--line)}
+.empty .en{font-family:var(--en);font-weight:300;font-size:24px;color:var(--ink);letter-spacing:-.02em;display:block;margin-bottom:6px}
+
+/* product */
+.product{padding-block:40px;border-top:1px solid var(--line)}
+.product:first-of-type{border-top:1px solid var(--ink)}
+.product h3{font-family:var(--en);font-weight:300;font-size:26px;letter-spacing:-.02em;margin:0;line-height:1.3}
+.product h3 + .ko{margin:2px 0 0;font-size:15px}
+.product .time{color:var(--muted);font-size:14px;margin:4px 0 0}
+.rows{list-style:none;margin:22px 0 0;padding:0}
+.rows li{display:grid;grid-template-columns:1fr auto;gap:2px 16px;padding:12px 0;border-top:1px solid var(--line);align-items:baseline}
+.rows li:first-child{border-top:0}
+.rows .n{font-weight:400}
+.rows .d{grid-column:1;font-size:13px;color:var(--muted);line-height:1.6}
+.rows .p{grid-row:1;grid-column:2;font-variant-numeric:tabular-nums;white-space:nowrap}
+.sub{font-family:var(--en);font-weight:400;font-size:13px;letter-spacing:.02em;color:var(--muted);text-transform:capitalize;margin:30px 0 6px}
+.inc{margin:0;padding-left:18px;font-size:14px;line-height:1.9}
+.inc li::marker{color:var(--hush)}
+.small,.small .p{font-size:14px}
+.note{font-size:13px;color:var(--muted);line-height:1.8;margin:28px 0 0}
+.btn{display:inline-block;font:inherit;font-size:14px;text-decoration:none;border:1px solid var(--ink);color:var(--ink);padding:13px 28px;background:none;cursor:pointer;transition:background .2s,color .2s}
+.btn:hover{background:var(--ink);color:var(--bg)}
+.cta{padding-block:48px 8px}
+
+/* q&a */
+.qa{border-top:1px solid var(--ink)}
+.qa details{border-bottom:1px solid var(--line)}
+.qa summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:34px 1fr 20px;gap:8px;align-items:baseline;padding:20px 0;font-weight:400}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary .q{font-family:var(--en);font-weight:300;color:var(--muted);font-size:14px}
+.qa summary .t{font-family:var(--en);font-weight:200;font-size:20px;transition:transform .2s;text-align:right;line-height:1}
+.qa details[open] summary .t{transform:rotate(45deg)}
+.qa .a{padding:0 0 24px 42px;font-size:15px;line-height:1.95}
+.qa .a p{margin:0 0 8px}
+.qa .a ol{margin:0;padding-left:18px}
+
+/* footer */
+footer{margin-top:112px;border-top:1px solid var(--line)}
+footer .wrap{padding-block:48px calc(56px + env(safe-area-inset-bottom,0px));display:grid;gap:14px;font-size:13px;color:var(--muted)}
+footer .logo{justify-self:start}
+footer .logo img{height:20px}
+footer .tag{font-family:var(--en);font-weight:300;font-size:15px;color:var(--ink);margin:0}
+footer nav{display:flex;flex-wrap:wrap;gap:4px 18px;margin-top:6px}
+footer nav a{text-decoration:none;color:var(--ink);font-family:var(--en)}
+footer small{font-family:var(--en);font-size:12px;margin-top:10px}
+
+/* 상품 구분: 큰 상품마다 굵은 선 + 회색 머리띠, 펼친 내용은 연회색 판 */
+:root{--soft:#F5F5F4;--soft2:#FAFAF9}
+.product{padding-block:0 44px;border-top:0}
+.product:first-of-type{border-top:0}
+.product + .product{margin-top:20px}
+.product > h3{margin:0 calc(-1 * max(24px,env(safe-area-inset-left,0px))) 0;padding:26px max(24px,env(safe-area-inset-left,0px)) 0;background:var(--soft);border-top:2px solid var(--ink);font-size:28px}
+.product > h3 + .ko{margin:0 calc(-1 * max(24px,env(safe-area-inset-right,0px))) 0 calc(-1 * max(24px,env(safe-area-inset-left,0px)));padding:2px max(24px,env(safe-area-inset-right,0px)) 22px max(24px,env(safe-area-inset-left,0px));background:var(--soft);font-size:15px;color:var(--muted)}
+.product > h3 + .ko + .hint, .product > h3 + .ko + .time{margin-top:18px}
+.tier details[open] > summary{border-bottom:1px solid var(--line)}
+.tier details[open] > summary .n{font-weight:500}
+.pd{background:var(--soft2);padding:6px 16px 24px;margin:0 0 14px;border-left:2px solid var(--ink)}
+.view{animation:fade .5s ease both}
+@keyframes fade{from{opacity:.001;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.view,.drawer{animation:none}}
+</style>
+
+<header class="bar">
+  <div class="wrap">
+    <button class="icon-btn" type="button" id="openMenu" aria-label="메뉴 열기"><svg viewBox="0 0 24 24"><path d="M3 7h18M3 12h18M3 17h18"/></svg></button>
+    <a class="logo" href="#home" aria-label="은월스냅 처음으로"><img src="img/logo.png" alt="eunwol" width="340" height="94"></a>
+    <a class="icon-btn" href="https://pf.kakao.com/_jyxnAX/chat" target="_blank" rel="noopener" aria-label="카카오톡 상담 채널"><svg viewBox="0 0 24 24"><path d="M12 4.5c-4.97 0-9 3.13-9 7 0 2.45 1.62 4.6 4.07 5.86L6.3 20l3.48-2.18c.72.12 1.45.18 2.22.18 4.97 0 9-3.13 9-7s-4.03-6.5-9-6.5z"/></svg></a>
+  </div>
+</header>
+
+<div class="scrim" id="scrim" hidden></div>
+<aside class="drawer" id="menu" hidden aria-label="메뉴">
+  <button class="icon-btn close" type="button" id="closeMenu" aria-label="메뉴 닫기"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
+  <nav>
+    <a href="#product">Product</a>
+    <details>
+      <summary>Portfolio<svg viewBox="0 0 24 24"><path d="M5 9l7 7 7-7"/></svg></summary>
+      <div class="subs">
+        <a href="#portfolio" data-artist="lead">대표 작가</a>
+        <a href="#portfolio" data-artist="senior">수석 실장 작가</a>
+        <a href="#portfolio" data-artist="staff">실장 작가</a>
+      </div>
+    </details>
+    <a href="https://pf.kakao.com/_jyxnAX/chat" target="_blank" rel="noopener">Contact</a>
+    <a href="#qna">Q&amp;A</a>
+  </nav>
+</aside>
+
+<!-- HOME -->
+<main id="v-home" class="view">
+  <div class="wrap head">
+    <h1>Eunwol.</h1>
+    <p class="lede">찰나의 순간을 기록합니다.<br>우리는 영원을 믿습니다.</p>
+    <p class="lede">사랑을 담아<br>은월, 주연</p>
+    <p class="copy">© 2026. eunwol snap All Right Reserved.</p>
+  </div>
+  <figure class="wrap hero" style="margin-block:0">
+    <img src="img/p4.jpg" alt="부케와 웨딩 슈즈, 반지를 함께 놓은 오브제 사진" width="933" height="1400" fetchpriority="high">
+  </figure>
+  <nav class="wrap index" aria-label="바로가기">
+    <p class="label">Index</p>
+    <ul class="navlist">
+      <li><a href="#product"><span class="en">Product</span><span class="ko">상품 안내</span><span class="arr" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span></a></li>
+      <li><a href="#portfolio"><span class="en">Portfolio</span><span class="ko">작가별 포트폴리오</span><span class="arr" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span></a></li>
+      <li><a href="https://pf.kakao.com/_jyxnAX/chat" target="_blank" rel="noopener"><span class="en">Contact</span><span class="ko">상담 채널 바로가기 · 예식 날짜, 시간, 예식장을 함께 보내주세요</span><span class="arr" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></span></a></li>
+      <li><a href="#qna"><span class="en">Q&amp;A</span><span class="ko">자주 묻는 질문</span><span class="arr" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span></a></li>
+    </ul>
+  </nav>
+</main>
+
+<!-- PORTFOLIO -->
+<main id="v-portfolio" class="view" hidden>
+  <div class="wrap head">
+    <h2>Portfolio.</h2>
+    <p class="lede" id="pfLede">작가별 포트폴리오입니다.</p>
+  </div>
+  <div class="wrap">
+    <div class="tabs" role="tablist" aria-label="작가 선택" id="tabs"></div>
+    <div id="artistPane"></div>
+  </div>
+</main>
+
+<!-- PRODUCT -->
+<main id="v-product" class="view" hidden>
+  <div class="wrap head">
+    <h2>Product.</h2>
+    <p class="lede">은월스냅 상품 안내</p>  </div>
+  <div class="wrap">
+    <section class="product">
+      <h3>Wedding iPhone / Digicam Snap</h3>
+      <p class="ko">본식 아이폰 스냅 / 디카 스냅</p>
+      <p class="hint">작가를 누르면 상품 구성을 보실 수 있습니다.</p>
+      <ul class="rows tier">
+        <li><details><summary><span class="n">대표 작가<small>아이폰 스냅 · 디카 스냅</small><small>대전 출장비 무료</small></span><span class="p">350,000원<small>최대 할인 −3만원</small></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="pd"><p class="sub">상품 구성</p><ul class="inc"><li>대표 작가 촬영</li><li>본식 90분 전 – 플라워샤워 (약 2시간)</li><li>아이폰 사진·영상 원본 전체 (24시간 이내)</li><li>빈티지 디카 원본 전체 (7일 이내)</li><li>하이엔드 디카 원본 전체 (7일 이내)</li><li>작가 셀렉 프리미엄 보정본 25장 (7일 이내)</li><li>폴라로이드 5장 (당일 전달)</li><li>Thank you card 5종<br>(신랑신부용 3종 + 혼주용 각 1종)</li><li>Wedding poster 4종<br>(인스타그램 스토리 &amp; 카톡 프로필용)</li></ul><div class="promise"><p>*은월은 사진의 퀄리티에 집중하기 위해 컷수 제한을 두지 않습니다.</p><p>*모든 보정은 대표 작가가 직접 합니다.</p></div><p class="sub">촬영 기기</p><ul class="inc"><li>아이폰 17pro / xs</li><li>빈티지 디카 / 리코 하이엔드 디카</li><li>후지 폴라로이드</li></ul><p class="sub">추가 옵션</p><ul class="rows small"><li><span class="n">초상권 비동의 시</span><span class="p">+20,000원</span></li><li><span class="n">하이라이트 영상 (빈티지 또는 아이폰)</span><span class="p">+50,000원</span></li><li><span class="n">식전 연출 촬영 추가 (30분)</span><span class="p">+50,000원</span></li><li><span class="n">원판 촬영 추가 (20분)</span><span class="p">+20,000원</span></li><li><span class="n">원판 &amp; 연회장 촬영 추가 (50분)</span><span class="p">+70,000원</span></li><li><span class="n">호텔 예식 2부 추가</span><span class="p">+100,000원</span></li><li><span class="n">폴라로이드 5장 추가</span><span class="p">+30,000원</span></li><li><span class="n">프리미엄 보정본 5장 추가</span><span class="p">+30,000원</span></li><li><span class="n">출장비</span><span class="p">대전 무료 · 그 외 별도 안내</span></li></ul><p class="sub">할인 혜택</p><ul class="rows small"><li><span class="n">계약 후기 작성 시</span><span class="p">10,000원 페이백</span></li><li><span class="n">본식 후기 작성 시</span><span class="p">20,000원 페이백</span></li></ul></div></details></li>
+        <li><details><summary><span class="n">수석 실장 작가<small>아이폰 스냅 · 디카 스냅</small><small>천안 출장비 무료</small></span><span class="p">300,000원<small>최대 할인 −3만원</small></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="pd"><p class="sub">상품 구성</p><ul class="inc"><li>수석 실장 작가 촬영</li><li>본식 90분 전 – 플라워샤워 (약 2시간)</li><li>아이폰 사진·영상 원본 전체 (24시간 이내)</li><li>빈티지 디카 원본 전체 (7일 이내)</li><li>하이엔드 디카 원본 전체 (7일 이내)</li><li>작가 셀렉 프리미엄 보정본 25장 (7일 이내)</li><li>폴라로이드 5장 (당일 전달)</li><li>Thank you card 5종<br>(신랑신부용 3종 + 혼주용 각 1종)</li><li>Wedding poster 4종<br>(인스타그램 스토리 &amp; 카톡 프로필용)</li></ul><div class="promise"><p>*은월은 사진의 퀄리티에 집중하기 위해 컷수 제한을 두지 않습니다.</p><p>*모든 보정은 대표 작가가 직접 합니다.</p></div><p class="sub">촬영 기기</p><ul class="inc"><li>아이폰 17pro / xs</li><li>빈티지 디카 / 리코 하이엔드 디카</li><li>후지 폴라로이드</li></ul><p class="sub">추가 옵션</p><ul class="rows small"><li><span class="n">초상권 비동의 시</span><span class="p">+20,000원</span></li><li><span class="n">하이라이트 영상 (빈티지 또는 아이폰)</span><span class="p">+50,000원</span></li><li><span class="n">식전 연출 촬영 추가 (30분)</span><span class="p">+50,000원</span></li><li><span class="n">원판 촬영 추가 (20분)</span><span class="p">+20,000원</span></li><li><span class="n">원판 &amp; 연회장 촬영 추가 (50분)</span><span class="p">+70,000원</span></li><li><span class="n">호텔 예식 2부 추가</span><span class="p">+100,000원</span></li><li><span class="n">폴라로이드 5장 추가</span><span class="p">+30,000원</span></li><li><span class="n">프리미엄 보정본 5장 추가</span><span class="p">+30,000원</span></li><li><span class="n">출장비</span><span class="p">천안 무료 · 그 외 별도 안내</span></li></ul><p class="sub">할인 혜택</p><ul class="rows small"><li><span class="n">계약 후기 작성 시</span><span class="p">10,000원 페이백</span></li><li><span class="n">본식 후기 작성 시</span><span class="p">20,000원 페이백</span></li></ul></div></details></li>
+        <li><details><summary><span class="n">실장 작가<span class="soon">12월 오픈</span><small>아이폰 스냅</small><small>대전 출장비 무료</small></span><span class="p">280,000원<small>최대 할인 −3만원</small></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="pd"><p class="sub">상품 구성</p><ul class="inc"><li>실장 작가 촬영</li><li>본식 90분 전 – 플라워샤워 (약 2시간)</li><li>아이폰 사진·영상 원본 전체 (24시간 이내)</li><li>빈티지 디카 원본 전체 (24시간 이내)</li><li>작가 셀렉 프리미엄 보정본 25장 (7일 이내)</li><li>폴라로이드 5장 (당일 전달)</li><li>Thank you card 5종<br>(신랑신부용 3종 + 혼주용 각 1종)</li><li>Wedding poster 4종<br>(인스타그램 스토리 &amp; 카톡 프로필용)</li></ul><div class="promise"><p>*은월은 사진의 퀄리티에 집중하기 위해 컷수 제한을 두지 않습니다.</p><p>*모든 보정은 대표 작가가 직접 합니다.</p></div><p class="sub">촬영 기기</p><ul class="inc"><li>아이폰 17pro / xs</li><li>빈티지 디카</li><li>후지 폴라로이드</li></ul><p class="sub">추가 옵션</p><ul class="rows small"><li><span class="n">초상권 비동의 시</span><span class="p">+20,000원</span></li><li><span class="n">하이라이트 영상 (빈티지 또는 아이폰)</span><span class="p">+50,000원</span></li><li><span class="n">식전 연출 촬영 추가 (30분)</span><span class="p">+50,000원</span></li><li><span class="n">원판 촬영 추가 (20분)</span><span class="p">+20,000원</span></li><li><span class="n">원판 &amp; 연회장 촬영 추가 (50분)</span><span class="p">+70,000원</span></li><li><span class="n">호텔 예식 2부 추가</span><span class="p">+100,000원</span></li><li><span class="n">폴라로이드 5장 추가</span><span class="p">+30,000원</span></li><li><span class="n">프리미엄 보정본 5장 추가</span><span class="p">+30,000원</span></li><li><span class="n">출장비</span><span class="p">대전 무료 · 그 외 별도 안내</span></li></ul><p class="sub">할인 혜택</p><ul class="rows small"><li><span class="n">계약 후기 작성 시</span><span class="p">10,000원 페이백</span></li><li><span class="n">본식 후기 작성 시</span><span class="p">20,000원 페이백</span></li></ul></div></details></li>
+      </ul>
+    </section>
+
+    <section class="product">
+      <h3>Studio Sub Snap</h3>
+      <p class="ko">스튜디오 서브 스냅</p>
+      <p class="time">대표 작가 · 기본 2시간 촬영</p>
+      <ul class="rows tier">
+        <li><details><summary><span class="n">스튜디오 서브 스냅<small>아이폰 스냅 · 디카 스냅</small></span><span class="p">300,000원<small>최대 할인 −8만원</small></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="pd"><p class="sub">상품 구성</p><ul class="inc"><li>대표 작가 촬영<span class="mini">대전 출장비 무료</span></li><li>기본 2시간 촬영</li><li>아이폰 사진·영상 원본 전체 (24시간 이내)</li><li>빈티지 디카 원본 전체 (14일 이내)</li><li>하이엔드 디카 원본 전체 (14일 이내)</li><li>작가 셀렉 프리미엄 보정본 30장 (14일 이내)</li><li>1분 하이라이트 영상 (14일 이내)</li></ul><div class="promise"><p>*은월은 사진의 퀄리티에 집중하기 위해 컷수 제한을 두지 않습니다.</p><p>*모든 보정은 대표 작가가 직접 합니다.</p></div><p class="sub">촬영 기기</p><ul class="inc"><li>아이폰 17pro / 아이폰 xs</li><li>캐논 빈티지 디카 / 리코 하이엔드 디카</li><li>후지 폴라로이드</li></ul><p class="sub">추가 옵션</p><ul class="rows small"><li><span class="n">초상권 비동의 시</span><span class="p">+20,000원</span></li><li><span class="n">촬영 1시간당 추가</span><span class="p">+50,000원</span></li><li><span class="n">프리미엄 보정본 5장 추가</span><span class="p">+30,000원</span></li><li><span class="n">빈티지 1분 하이라이트 영상</span><span class="p">+50,000원</span></li><li><span class="n">폴라로이드 5장 추가</span><span class="p">+30,000원</span></li><li><span class="n">출장비</span><span class="p">대전 무료 · 그 외 별도 안내</span></li></ul><p class="sub">할인 혜택</p><ul class="rows small"><li><span class="n">본식 아이폰 스냅 동시 계약 시</span><span class="p">−50,000원</span></li><li><span class="n">계약 후기 작성 시</span><span class="p">10,000원 페이백</span></li><li><span class="n">촬영 후기 작성 시</span><span class="p">20,000원 페이백</span></li></ul></div></details></li>
+      </ul>
+    </section>
+
+    <section class="product">
+      <h3>First Birthday Snap</h3>
+      <p class="ko">돌스냅</p>
+      <p class="time">연출 촬영, 원판, 돌잡이까지 (약 120분)</p>
+      <ul class="rows tier">
+        <li><details><summary><span class="n">메인 스냅<small>아이폰 스냅 · 디카 스냅</small></span><span class="p">400,000원<small>최대 할인 −3만원</small></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="pd"><p class="sub">상품 구성</p><ul class="inc"><li>메인 스냅 구성</li><li>연출 촬영 – 원판 – 돌잡이까지 (약 120분 촬영)</li><li>아이폰 사진·영상 원본 전체 (24시간 이내)</li><li>하이엔드 디카 원본 사진 전체 (7일 이내)</li><li>작가 셀렉 프리미엄 보정본 30장 (7일 이내)</li><li>1분 내외의 릴스 영상 (7일 이내)</li></ul><p class="sub">촬영 기기</p><ul class="inc"><li>아이폰 17pro / 리코 하이엔드 디카</li><li>후지 폴라로이드</li></ul><p class="sub">추가 옵션</p><ul class="rows small"><li><span class="n">초상권 비동의 시</span><span class="p">+20,000원</span></li><li><span class="n">폴라로이드 5장</span><span class="p">+30,000원</span></li><li><span class="n">고객 셀렉 보정본 10장</span><span class="p">+30,000원</span></li><li><span class="n">출장비</span><span class="p">별도 안내</span></li></ul><p class="sub">할인 혜택</p><ul class="rows small"><li><span class="n">계약 후기 작성 시</span><span class="p">10,000원 페이백</span></li><li><span class="n">촬영 후기 작성 시</span><span class="p">20,000원 페이백</span></li></ul></div></details></li>
+        <li><details><summary><span class="n">서브 스냅<small>아이폰 스냅 · 디카 스냅</small></span><span class="p">350,000원<small>최대 할인 −3만원</small></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="pd"><p class="sub">상품 구성</p><ul class="inc"><li>연출 촬영 – 원판 – 돌잡이까지 (약 120분 촬영)</li><li>아이폰 사진·영상 원본 전체 (24시간 이내)</li><li>하이엔드 디카 원본 사진 전체 (7일 이내)</li><li>작가 셀렉 프리미엄 보정본 25장 (7일 이내)</li><li>1분 내외의 릴스 영상 (7일 이내)</li></ul><p class="sub">촬영 기기</p><ul class="inc"><li>아이폰 17pro / 리코 하이엔드 디카</li><li>후지 폴라로이드</li></ul><p class="sub">추가 옵션</p><ul class="rows small"><li><span class="n">초상권 비동의 시</span><span class="p">+20,000원</span></li><li><span class="n">폴라로이드 5장</span><span class="p">+30,000원</span></li><li><span class="n">고객 셀렉 보정본 10장</span><span class="p">+30,000원</span></li><li><span class="n">출장비</span><span class="p">별도 안내</span></li></ul><p class="sub">할인 혜택</p><ul class="rows small"><li><span class="n">계약 후기 작성 시</span><span class="p">10,000원 페이백</span></li><li><span class="n">촬영 후기 작성 시</span><span class="p">20,000원 페이백</span></li></ul></div></details></li>
+      </ul>
+    </section>
+
+    <div class="cta"><a class="btn" href="https://pf.kakao.com/_jyxnAX/chat" target="_blank" rel="noopener">상담 채널에서 예약 문의하기</a></div>
+  </div>
+</main>
+
+<!-- Q&A -->
+<main id="v-qna" class="view" hidden>
+  <div class="wrap head">
+    <h2>Q&amp;A.</h2>
+    <p class="lede">자주 주시는 질문을 모았습니다.</p>
+  </div>
+  <div class="wrap qa" id="qa"></div>
+  <div class="wrap cta"><a class="btn" href="https://pf.kakao.com/_jyxnAX/chat" target="_blank" rel="noopener">다른 질문은 상담 채널로</a></div>
+</main>
+
+<div class="lb" id="lb" hidden role="dialog" aria-label="사진 크게 보기">
+  <button class="lb-x" type="button" id="lbX" aria-label="닫기"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
+  <button class="lb-nav lb-prev" type="button" id="lbP" aria-label="이전 사진"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+  <img id="lbImg" alt="">
+  <button class="lb-nav lb-next" type="button" id="lbN" aria-label="다음 사진"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+</div>
+
+<footer>
+  <div class="wrap">
+    <a class="logo" href="#home" aria-label="은월스냅 처음으로"><img src="img/logo.png" alt="eunwol" width="340" height="94"></a>
+    <p class="tag">Quiet moments, kept in light.</p>
+    <span>은월스냅 · 대전 웨딩 아이폰 서브 스냅<br>상담 시간 월–금 09:00–21:00 · 카카오톡 채널 ‘은월스냅’</span>
+    <nav aria-label="하단 메뉴"><a href="#product">Product</a><a href="#portfolio">Portfolio</a><a href="https://pf.kakao.com/_jyxnAX/chat" target="_blank" rel="noopener">Contact</a><a href="#qna">Q&amp;A</a></nav>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  function el(tag, cls, text){ var e=document.createElement(tag); if(cls) e.className=cls; if(text!=null) e.textContent=text; return e; }
+
+  var ARTISTS = [
+    { id:'lead', name:'대표 작가', sub:'대표 작가 | Lead', albums:[{"t":"Daejeon La Domus Luminis Hall","c":"img/pf/lead/ladomus-luminis/01.jpg","p":[["img/pf/lead/ladomus-luminis/01.jpg",1067,1600],["img/pf/lead/ladomus-luminis/02.jpg",1067,1600],["img/pf/lead/ladomus-luminis/03.jpg",1067,1600],["img/pf/lead/ladomus-luminis/04.jpg",1067,1600],["img/pf/lead/ladomus-luminis/05.jpg",1067,1600],["img/pf/lead/ladomus-luminis/06.jpg",1067,1600],["img/pf/lead/ladomus-luminis/07.jpg",1067,1600],["img/pf/lead/ladomus-luminis/08.jpg",1066,1600],["img/pf/lead/ladomus-luminis/09.jpg",1067,1600],["img/pf/lead/ladomus-luminis/10.jpg",1067,1600],["img/pf/lead/ladomus-luminis/11.jpg",1066,1600],["img/pf/lead/ladomus-luminis/12.jpg",1067,1600],["img/pf/lead/ladomus-luminis/13.jpg",1067,1600],["img/pf/lead/ladomus-luminis/14.jpg",1067,1600],["img/pf/lead/ladomus-luminis/15.jpg",1067,1600],["img/pf/lead/ladomus-luminis/16.jpg",1067,1600],["img/pf/lead/ladomus-luminis/17.jpg",1067,1600],["img/pf/lead/ladomus-luminis/18.jpg",1067,1600],["img/pf/lead/ladomus-luminis/19.jpg",1067,1600],["img/pf/lead/ladomus-luminis/20.jpg",1067,1600],["img/pf/lead/ladomus-luminis/21.jpg",1067,1600]]},{"t":"Daejeon La Domus Amorium Hall","c":"img/pf/lead/ladomus-amorium/01.jpg","p":[["img/pf/lead/ladomus-amorium/01.jpg",1067,1600],["img/pf/lead/ladomus-amorium/02.jpg",1067,1600],["img/pf/lead/ladomus-amorium/03.jpg",1067,1600],["img/pf/lead/ladomus-amorium/04.jpg",1067,1600],["img/pf/lead/ladomus-amorium/05.jpg",1067,1600],["img/pf/lead/ladomus-amorium/06.jpg",1067,1600],["img/pf/lead/ladomus-amorium/07.jpg",1067,1600],["img/pf/lead/ladomus-amorium/08.jpg",1067,1600],["img/pf/lead/ladomus-amorium/09.jpg",1067,1600],["img/pf/lead/ladomus-amorium/10.jpg",1067,1600],["img/pf/lead/ladomus-amorium/11.jpg",1067,1600],["img/pf/lead/ladomus-amorium/12.jpg",1067,1600],["img/pf/lead/ladomus-amorium/13.jpg",1066,1600],["img/pf/lead/ladomus-amorium/14.jpg",1067,1600],["img/pf/lead/ladomus-amorium/15.jpg",1067,1600],["img/pf/lead/ladomus-amorium/16.jpg",1067,1600],["img/pf/lead/ladomus-amorium/17.jpg",1067,1600],["img/pf/lead/ladomus-amorium/18.jpg",1067,1600],["img/pf/lead/ladomus-amorium/19.jpg",1067,1600],["img/pf/lead/ladomus-amorium/20.jpg",1067,1600],["img/pf/lead/ladomus-amorium/21.jpg",1067,1600]]},{"t":"Daejeon La Domus Assisi Hall","c":"img/pf/lead/ladomus-assisi/01.jpg","p":[["img/pf/lead/ladomus-assisi/01.jpg",1200,1600],["img/pf/lead/ladomus-assisi/02.jpg",1200,1600],["img/pf/lead/ladomus-assisi/03.jpg",1200,1600],["img/pf/lead/ladomus-assisi/04.jpg",1200,1600],["img/pf/lead/ladomus-assisi/05.jpg",1200,1600],["img/pf/lead/ladomus-assisi/06.jpg",1200,1600],["img/pf/lead/ladomus-assisi/07.jpg",1200,1600],["img/pf/lead/ladomus-assisi/08.jpg",1200,1600],["img/pf/lead/ladomus-assisi/09.jpg",1067,1600],["img/pf/lead/ladomus-assisi/10.jpg",1067,1600],["img/pf/lead/ladomus-assisi/11.jpg",1067,1600],["img/pf/lead/ladomus-assisi/12.jpg",1067,1600],["img/pf/lead/ladomus-assisi/13.jpg",1067,1600],["img/pf/lead/ladomus-assisi/14.jpg",1066,1600],["img/pf/lead/ladomus-assisi/15.jpg",1067,1600],["img/pf/lead/ladomus-assisi/16.jpg",1067,1600],["img/pf/lead/ladomus-assisi/17.jpg",1067,1600],["img/pf/lead/ladomus-assisi/18.jpg",1067,1600]]},{"t":"Daejeon Palais de Opera Garnier Hall","c":"img/pf/lead/palais-garnier/01.jpg","p":[["img/pf/lead/palais-garnier/01.jpg",1200,1600],["img/pf/lead/palais-garnier/02.jpg",1600,1200],["img/pf/lead/palais-garnier/03.jpg",1200,1600],["img/pf/lead/palais-garnier/04.jpg",1600,1200],["img/pf/lead/palais-garnier/05.jpg",1200,1600],["img/pf/lead/palais-garnier/06.jpg",1200,1600],["img/pf/lead/palais-garnier/07.jpg",1200,1600],["img/pf/lead/palais-garnier/08.jpg",1067,1600],["img/pf/lead/palais-garnier/09.jpg",1067,1600],["img/pf/lead/palais-garnier/10.jpg",1067,1600],["img/pf/lead/palais-garnier/11.jpg",1067,1600],["img/pf/lead/palais-garnier/12.jpg",1066,1600],["img/pf/lead/palais-garnier/13.jpg",1067,1600],["img/pf/lead/palais-garnier/14.jpg",1067,1600],["img/pf/lead/palais-garnier/15.jpg",1067,1600],["img/pf/lead/palais-garnier/16.jpg",1067,1600],["img/pf/lead/palais-garnier/17.jpg",1067,1600],["img/pf/lead/palais-garnier/18.jpg",1067,1600],["img/pf/lead/palais-garnier/19.jpg",1067,1600],["img/pf/lead/palais-garnier/20.jpg",1067,1600],["img/pf/lead/palais-garnier/21.jpg",1067,1600],["img/pf/lead/palais-garnier/22.jpg",1067,1600],["img/pf/lead/palais-garnier/23.jpg",1066,1600],["img/pf/lead/palais-garnier/24.jpg",1067,1600],["img/pf/lead/palais-garnier/25.jpg",1067,1600],["img/pf/lead/palais-garnier/26.jpg",1067,1600],["img/pf/lead/palais-garnier/27.jpg",1067,1600],["img/pf/lead/palais-garnier/28.jpg",1066,1600],["img/pf/lead/palais-garnier/29.jpg",1067,1600],["img/pf/lead/palais-garnier/30.jpg",1067,1600],["img/pf/lead/palais-garnier/31.jpg",1067,1600],["img/pf/lead/palais-garnier/32.jpg",1066,1600],["img/pf/lead/palais-garnier/33.jpg",1067,1600],["img/pf/lead/palais-garnier/34.jpg",1067,1600],["img/pf/lead/palais-garnier/35.jpg",1067,1600],["img/pf/lead/palais-garnier/36.jpg",1067,1600],["img/pf/lead/palais-garnier/37.jpg",1067,1600],["img/pf/lead/palais-garnier/38.jpg",1600,1067],["img/pf/lead/palais-garnier/39.jpg",1067,1600],["img/pf/lead/palais-garnier/40.jpg",1067,1600],["img/pf/lead/palais-garnier/41.jpg",1067,1600],["img/pf/lead/palais-garnier/42.jpg",1067,1600],["img/pf/lead/palais-garnier/43.jpg",1067,1600],["img/pf/lead/palais-garnier/44.jpg",1067,1600],["img/pf/lead/palais-garnier/45.jpg",1067,1600],["img/pf/lead/palais-garnier/46.jpg",1067,1600],["img/pf/lead/palais-garnier/47.jpg",1067,1600],["img/pf/lead/palais-garnier/48.jpg",1067,1600],["img/pf/lead/palais-garnier/49.jpg",1067,1600],["img/pf/lead/palais-garnier/50.jpg",1067,1600]]},{"t":"Cheonan Virenti Verte Hall","c":"img/pf/lead/virenti-verte/01.jpg","p":[["img/pf/lead/virenti-verte/01.jpg",1067,1600],["img/pf/lead/virenti-verte/02.jpg",1200,1600],["img/pf/lead/virenti-verte/03.jpg",1200,1600],["img/pf/lead/virenti-verte/04.jpg",1170,1600],["img/pf/lead/virenti-verte/05.jpg",1143,1600],["img/pf/lead/virenti-verte/06.jpg",1067,1600],["img/pf/lead/virenti-verte/07.jpg",1067,1600],["img/pf/lead/virenti-verte/08.jpg",1067,1600],["img/pf/lead/virenti-verte/09.jpg",1067,1600],["img/pf/lead/virenti-verte/10.jpg",1200,1600],["img/pf/lead/virenti-verte/11.jpg",1200,1600],["img/pf/lead/virenti-verte/12.jpg",1067,1600],["img/pf/lead/virenti-verte/13.jpg",1067,1600],["img/pf/lead/virenti-verte/14.jpg",1067,1600],["img/pf/lead/virenti-verte/15.jpg",714,952]]},{"t":"Seoul The Raum Majestic Ballroom","c":"img/pf/lead/the-raum/01.jpg","p":[["img/pf/lead/the-raum/01.jpg",1200,1600],["img/pf/lead/the-raum/02.jpg",1200,1600],["img/pf/lead/the-raum/03.jpg",1200,1600],["img/pf/lead/the-raum/04.jpg",1200,1600],["img/pf/lead/the-raum/05.jpg",1067,1600],["img/pf/lead/the-raum/06.jpg",1067,1600],["img/pf/lead/the-raum/07.jpg",1067,1600],["img/pf/lead/the-raum/08.jpg",1067,1600],["img/pf/lead/the-raum/09.jpg",1067,1600],["img/pf/lead/the-raum/10.jpg",1067,1600],["img/pf/lead/the-raum/11.jpg",1067,1600],["img/pf/lead/the-raum/12.jpg",1066,1600],["img/pf/lead/the-raum/13.jpg",1067,1600],["img/pf/lead/the-raum/14.jpg",1067,1600],["img/pf/lead/the-raum/15.jpg",1067,1600],["img/pf/lead/the-raum/16.jpg",1067,1600]]},{"t":"Jeonju Hyanggyo","c":"img/pf/lead/jeonju-hyanggyo/01.jpg","p":[["img/pf/lead/jeonju-hyanggyo/01.jpg",1067,1600],["img/pf/lead/jeonju-hyanggyo/02.jpg",1067,1600],["img/pf/lead/jeonju-hyanggyo/03.jpg",1600,1067],["img/pf/lead/jeonju-hyanggyo/04.jpg",1067,1600],["img/pf/lead/jeonju-hyanggyo/05.jpg",1067,1600],["img/pf/lead/jeonju-hyanggyo/06.jpg",1067,1600],["img/pf/lead/jeonju-hyanggyo/07.jpg",1067,1600],["img/pf/lead/jeonju-hyanggyo/08.jpg",1067,1600],["img/pf/lead/jeonju-hyanggyo/09.jpg",1067,1600],["img/pf/lead/jeonju-hyanggyo/10.jpg",1067,1600],["img/pf/lead/jeonju-hyanggyo/11.jpg",1067,1600],["img/pf/lead/jeonju-hyanggyo/12.jpg",1067,1600],["img/pf/lead/jeonju-hyanggyo/13.jpg",1067,1600],["img/pf/lead/jeonju-hyanggyo/14.jpg",1067,1600],["img/pf/lead/jeonju-hyanggyo/15.jpg",1067,1600],["img/pf/lead/jeonju-hyanggyo/16.jpg",1067,1600],["img/pf/lead/jeonju-hyanggyo/17.jpg",1067,1600],["img/pf/lead/jeonju-hyanggyo/18.jpg",1067,1600]]},{"t":"Seoul Geunhwawon","c":"img/pf/lead/geunhwawon/01.jpg","p":[["img/pf/lead/geunhwawon/01.jpg",1067,1600],["img/pf/lead/geunhwawon/02.jpg",1067,1600],["img/pf/lead/geunhwawon/03.jpg",1067,1600],["img/pf/lead/geunhwawon/04.jpg",1067,1600],["img/pf/lead/geunhwawon/05.jpg",1067,1600],["img/pf/lead/geunhwawon/06.jpg",1067,1600],["img/pf/lead/geunhwawon/07.jpg",1067,1600],["img/pf/lead/geunhwawon/08.jpg",1067,1600],["img/pf/lead/geunhwawon/09.jpg",1067,1600],["img/pf/lead/geunhwawon/10.jpg",1067,1600],["img/pf/lead/geunhwawon/11.jpg",1067,1600],["img/pf/lead/geunhwawon/12.jpg",1067,1600],["img/pf/lead/geunhwawon/13.jpg",1066,1600],["img/pf/lead/geunhwawon/14.jpg",1067,1600],["img/pf/lead/geunhwawon/15.jpg",1067,1600],["img/pf/lead/geunhwawon/16.jpg",1067,1600],["img/pf/lead/geunhwawon/17.jpg",1067,1600],["img/pf/lead/geunhwawon/18.jpg",1067,1600],["img/pf/lead/geunhwawon/19.jpg",1067,1600],["img/pf/lead/geunhwawon/20.jpg",1067,1600],["img/pf/lead/geunhwawon/21.jpg",1067,1600]]},{"t":"Seoul Gangseo Yewon Church","c":"img/pf/lead/gangseo-yewon/01.jpg","p":[["img/pf/lead/gangseo-yewon/01.jpg",1200,1600],["img/pf/lead/gangseo-yewon/02.jpg",1200,1600],["img/pf/lead/gangseo-yewon/03.jpg",1200,1600],["img/pf/lead/gangseo-yewon/04.jpg",1200,1600],["img/pf/lead/gangseo-yewon/05.jpg",1067,1600],["img/pf/lead/gangseo-yewon/06.jpg",883,1325],["img/pf/lead/gangseo-yewon/07.jpg",1067,1600],["img/pf/lead/gangseo-yewon/08.jpg",1067,1600],["img/pf/lead/gangseo-yewon/09.jpg",1067,1600]]}] },
+    { id:'senior', name:'수석 실장 작가', sub:'수석 실장 작가 | Senior', albums:[{"t":"Daejeon La Domus Hall","c":"img/pf/senior/ladomus-ladomus/01.jpg","p":[["img/pf/senior/ladomus-ladomus/01.jpg",1200,1600],["img/pf/senior/ladomus-ladomus/02.jpg",1200,1600],["img/pf/senior/ladomus-ladomus/03.jpg",1032,1600],["img/pf/senior/ladomus-ladomus/04.jpg",900,1600],["img/pf/senior/ladomus-ladomus/05.jpg",1200,1600],["img/pf/senior/ladomus-ladomus/06.jpg",1200,1600],["img/pf/senior/ladomus-ladomus/07.jpg",1200,1600],["img/pf/senior/ladomus-ladomus/08.jpg",1200,1600],["img/pf/senior/ladomus-ladomus/09.jpg",1200,1600],["img/pf/senior/ladomus-ladomus/10.jpg",1200,1600],["img/pf/senior/ladomus-ladomus/11.jpg",1200,1600],["img/pf/senior/ladomus-ladomus/12.jpg",1067,1600],["img/pf/senior/ladomus-ladomus/13.jpg",1067,1600],["img/pf/senior/ladomus-ladomus/14.jpg",1067,1600],["img/pf/senior/ladomus-ladomus/15.jpg",1067,1600],["img/pf/senior/ladomus-ladomus/16.jpg",1067,1600]]},{"t":"Cheonan Virenti","c":"img/pf/senior/virenti/01.jpg","p":[["img/pf/senior/virenti/01.jpg",1200,1600],["img/pf/senior/virenti/02.jpg",1200,1600],["img/pf/senior/virenti/03.jpg",1200,1600],["img/pf/senior/virenti/04.jpg",1600,1200],["img/pf/senior/virenti/05.jpg",1200,1600],["img/pf/senior/virenti/06.jpg",1067,1600],["img/pf/senior/virenti/07.jpg",1067,1600],["img/pf/senior/virenti/08.jpg",1067,1600],["img/pf/senior/virenti/09.jpg",1067,1600],["img/pf/senior/virenti/10.jpg",1067,1600],["img/pf/senior/virenti/11.jpg",1067,1600],["img/pf/senior/virenti/12.jpg",1067,1600],["img/pf/senior/virenti/13.jpg",1067,1600],["img/pf/senior/virenti/14.jpg",1067,1600],["img/pf/senior/virenti/15.jpg",1067,1600],["img/pf/senior/virenti/16.jpg",1067,1600],["img/pf/senior/virenti/17.jpg",1067,1600],["img/pf/senior/virenti/18.jpg",1067,1600],["img/pf/senior/virenti/19.jpg",1067,1600],["img/pf/senior/virenti/20.jpg",1067,1600],["img/pf/senior/virenti/21.jpg",1067,1600],["img/pf/senior/virenti/22.jpg",1067,1600],["img/pf/senior/virenti/23.jpg",1067,1600],["img/pf/senior/virenti/24.jpg",1067,1600],["img/pf/senior/virenti/25.jpg",1067,1600]]},{"t":"Cheonan T Wedding","c":"img/pf/senior/t-wedding/01.jpg","p":[["img/pf/senior/t-wedding/01.jpg",1200,1600],["img/pf/senior/t-wedding/02.jpg",1200,1600],["img/pf/senior/t-wedding/03.jpg",1200,1600],["img/pf/senior/t-wedding/04.jpg",1067,1600],["img/pf/senior/t-wedding/05.jpg",1067,1600],["img/pf/senior/t-wedding/06.jpg",1067,1600],["img/pf/senior/t-wedding/07.jpg",1067,1600],["img/pf/senior/t-wedding/08.jpg",1067,1600],["img/pf/senior/t-wedding/09.jpg",1067,1600],["img/pf/senior/t-wedding/10.jpg",1067,1600],["img/pf/senior/t-wedding/11.jpg",1067,1600],["img/pf/senior/t-wedding/12.jpg",1067,1600],["img/pf/senior/t-wedding/13.jpg",1067,1600],["img/pf/senior/t-wedding/14.jpg",1067,1600],["img/pf/senior/t-wedding/15.jpg",1067,1600],["img/pf/senior/t-wedding/16.jpg",1067,1600],["img/pf/senior/t-wedding/17.jpg",1067,1600],["img/pf/senior/t-wedding/18.jpg",1067,1600],["img/pf/senior/t-wedding/19.jpg",1067,1600],["img/pf/senior/t-wedding/20.jpg",1067,1600],["img/pf/senior/t-wedding/21.jpg",1067,1600],["img/pf/senior/t-wedding/22.jpg",1067,1600],["img/pf/senior/t-wedding/23.jpg",1067,1600],["img/pf/senior/t-wedding/24.jpg",1067,1600],["img/pf/senior/t-wedding/25.jpg",1067,1600],["img/pf/senior/t-wedding/26.jpg",1067,1600],["img/pf/senior/t-wedding/27.jpg",1067,1600],["img/pf/senior/t-wedding/28.jpg",1067,1600],["img/pf/senior/t-wedding/29.jpg",1067,1600],["img/pf/senior/t-wedding/30.jpg",1067,1600],["img/pf/senior/t-wedding/31.jpg",1067,1600],["img/pf/senior/t-wedding/32.jpg",1067,1600],["img/pf/senior/t-wedding/33.jpg",1067,1600],["img/pf/senior/t-wedding/34.jpg",1067,1600],["img/pf/senior/t-wedding/35.jpg",1067,1600],["img/pf/senior/t-wedding/36.jpg",1067,1600],["img/pf/senior/t-wedding/37.jpg",1067,1600],["img/pf/senior/t-wedding/38.jpg",1067,1600],["img/pf/senior/t-wedding/39.jpg",1067,1600],["img/pf/senior/t-wedding/40.jpg",1067,1600]]},{"t":"Cheongju Bellis Wedding Botanic Hall","c":"img/pf/senior/bellis-botanic/01.jpg","p":[["img/pf/senior/bellis-botanic/01.jpg",1200,1600],["img/pf/senior/bellis-botanic/02.jpg",1200,1600],["img/pf/senior/bellis-botanic/03.jpg",1200,1600],["img/pf/senior/bellis-botanic/04.jpg",1200,1600],["img/pf/senior/bellis-botanic/05.jpg",1200,1600],["img/pf/senior/bellis-botanic/06.jpg",1067,1600],["img/pf/senior/bellis-botanic/07.jpg",1067,1600],["img/pf/senior/bellis-botanic/08.jpg",1067,1600],["img/pf/senior/bellis-botanic/09.jpg",1067,1600],["img/pf/senior/bellis-botanic/10.jpg",1067,1600],["img/pf/senior/bellis-botanic/11.jpg",1067,1600],["img/pf/senior/bellis-botanic/12.jpg",1067,1600],["img/pf/senior/bellis-botanic/13.jpg",1067,1600],["img/pf/senior/bellis-botanic/14.jpg",1067,1600],["img/pf/senior/bellis-botanic/15.jpg",1067,1600],["img/pf/senior/bellis-botanic/16.jpg",1067,1600],["img/pf/senior/bellis-botanic/17.jpg",1067,1600]]},{"t":"Cheongju Diael Wedding","c":"img/pf/senior/diael/01.jpg","p":[["img/pf/senior/diael/01.jpg",1067,1600],["img/pf/senior/diael/02.jpg",1067,1600],["img/pf/senior/diael/03.jpg",1067,1600],["img/pf/senior/diael/04.jpg",1067,1600],["img/pf/senior/diael/05.jpg",1067,1600],["img/pf/senior/diael/06.jpg",1067,1600],["img/pf/senior/diael/07.jpg",1067,1600],["img/pf/senior/diael/08.jpg",1067,1600],["img/pf/senior/diael/09.jpg",1067,1600],["img/pf/senior/diael/10.jpg",1067,1600],["img/pf/senior/diael/11.jpg",1067,1600],["img/pf/senior/diael/12.jpg",1067,1600],["img/pf/senior/diael/13.jpg",1067,1600],["img/pf/senior/diael/14.jpg",1067,1600],["img/pf/senior/diael/15.jpg",1067,1600],["img/pf/senior/diael/16.jpg",1067,1600],["img/pf/senior/diael/17.jpg",1067,1600],["img/pf/senior/diael/18.jpg",1067,1600],["img/pf/senior/diael/19.jpg",1067,1600],["img/pf/senior/diael/20.jpg",1067,1600],["img/pf/senior/diael/21.jpg",1067,1600]]}] },
+    { id:'staff', name:'실장 작가', sub:'실장 작가 | Artist', albums:[] }
+  ];
+  var current = 'lead', album = null;
+  function renderTabs(){
+    var t = $('tabs'); t.innerHTML='';
+    ARTISTS.forEach(function(a){
+      var b = el('button', '', a.name); b.type='button'; b.setAttribute('role','tab');
+      b.setAttribute('aria-selected', String(a.id===current));
+      b.addEventListener('click', function(){ current=a.id; album=null; renderTabs(); renderArtist(); });
+      t.appendChild(b);
+    });
+  }
+  function img(ph, cls){
+    var i = document.createElement('img'); i.src = ph[0]; i.width = ph[1]; i.height = ph[2]; i.loading = 'lazy'; i.decoding = 'async'; i.alt = '';
+    if (cls) i.className = cls; return i;
+  }
+  function artist(){ return ARTISTS.filter(function(x){ return x.id === current; })[0]; }
+  function renderArtist(){
+    var box = $('artistPane'); box.innerHTML='';
+    var a = artist();
+    $('tabs').style.display = album ? 'none' : ''; $('pfLede').style.display = album ? 'none' : '';
+    if (album) return renderAlbum(a, album);
+    if (!a.albums.length) {
+      var e = el('div','empty'); e.appendChild(el('span','en','Coming soon')); e.appendChild(document.createTextNode('포트폴리오를 준비하고 있습니다.'));
+      box.appendChild(e); return;
+    }
+    var all = [], grid = el('div','alb-grid');
+    a.albums.forEach(function(al){ al.p.forEach(function(ph){ all.push({ph:ph, t:al.t}); }); });
+    var list = all.map(function(x){ return x.ph; });
+    all.forEach(function(x, k){
+      var c = el('a','alb'); c.href = '#portfolio';
+      var f = el('div','alb-cv'); var im = document.createElement('img'); im.src = x.ph[0]; im.width = x.ph[1]; im.height = x.ph[2]; im.alt = x.t; im.decoding = 'async'; im.loading = k < 4 ? 'eager' : 'lazy'; f.appendChild(im); c.appendChild(f);
+      c.appendChild(el('span','alb-t', x.t)); c.appendChild(el('span','alb-s', a.sub));
+      c.addEventListener('click', function(ev){ ev.preventDefault(); openLb(list, k); });
+      grid.appendChild(c);
+    });
+    box.appendChild(grid);
+  }
+  function renderAlbum(a, al){
+    var box = $('artistPane');
+    var back = el('button','alb-back','← 목록'); back.type='button';
+    back.addEventListener('click', function(){ album=null; renderArtist(); window.scrollTo(0,0); });
+    box.appendChild(back);
+    var head = el('div','alb-head'); head.appendChild(el('h2','alb-ht', al.t)); head.appendChild(el('span','alb-s', a.sub)); box.appendChild(head);
+    var grid = el('div','pf-grid');
+    al.p.forEach(function(ph, k){
+      var f = el('figure','pf-item'); var im = img(ph); if (k < 4) im.loading='eager'; f.appendChild(im); f.addEventListener('click', function(){ openLb(al.p, k); }); grid.appendChild(f);
+    });
+    box.appendChild(grid);
+    var more = el('button','alb-back alb-more','← 다른 예식 보기'); more.type='button';
+    more.addEventListener('click', function(){ album=null; renderArtist(); window.scrollTo(0,0); });
+    box.appendChild(more);
+  }
+  var lbA = null, lbI = 0;
+  function openLb(a, i){ lbA = a; lbI = i; $('lbImg').src = a[i][0]; $('lb').hidden = false; document.body.style.overflow='hidden'; }
+  function closeLb(){ $('lb').hidden = true; document.body.style.overflow=''; }
+  function stepLb(d){ if(!lbA) return; lbI = (lbI + d + lbA.length) % lbA.length; $('lbImg').src = lbA[lbI][0]; }
+
+  var QA = [
+    ['메인 스냅 없이 단독 촬영도 가능한가요?', ['불가합니다. 은월은 서브 스냅 포지션으로, 메인 스냅 작가님이 꼭 함께 계셔야 촬영이 가능합니다. 스튜디오 촬영은 스튜디오 측에 아이폰 스냅 작가 동행 허가를 먼저 받아 주셔야 합니다.']],
+    ['예약은 어떻게 진행되나요?', [['상담 채널로 예식 날짜, 시간, 예식장을 알려 주세요.','예약 가능 여부와 상품, 출장비를 안내드립니다.','신부님 전용 예약 신청서 링크를 보내드립니다.','신청서 작성 후 30분 이내에 전액 입금해 주시면 예약이 확정되고, 전자계약서를 이메일로 보내드립니다.']]],
+    ['계약금이 따로 있나요?', ['계약금 없이 전액 입금 시 예약이 확정됩니다.']],
+    ['출장비가 있나요?', ['대표 작가와 실장 작가는 대전, 수석 실장 작가는 천안 예식의 출장비가 무료입니다. 그 외 지역은 지역별 출장비가 있으며, 예식장을 알려 주시면 정확한 금액을 안내드립니다.']],
+    ['사진은 언제 받을 수 있나요?', ['아이폰 사진·영상 원본은 예식이 끝난 직후가 아닌, 그날의 촬영을 모두 마친 뒤 작가가 직접 검수하고 정리해 24시간 이내에 보내드립니다.', '오전 예식이어도 당일 늦은 밤이나 다음 날 받아보실 수 있으니, 조금만 여유를 두고 기다려 주세요.', '디카 원본과 작가 셀렉 보정본은 7일 이내에 같은 폴더에 업로드됩니다.']],
+    ['후기 페이백은 어떻게 받나요?', ['예약 확정 후 안내드리는 가이드라인에 따라 후기 작성 후 링크를 보내주시면 페이백을 입금해 드립니다.']],
+    ['초상권 동의 시 어디에 공개되나요?', ['은월스냅 인스타그램 계정과 홈페이지에 포트폴리오로 소개됩니다.', '초상권 비동의를 원하실 경우 계약 시 꼭 항목에 체크해 주세요.']],
+    ['현금영수증 발급이 가능한가요?', ['당연히 가능합니다. 본식 이후 요청해 주시면 발급 도와드립니다.']],
+    ['일정 변경이 가능한가요?', ['일정 조율이 가능한 경우 1회에 한해 변경해 드립니다. 변경 희망 날짜에 예약이 어려우면 환불 규정에 따라 환불해 드립니다.', '타인 양도는 불가하며, 일정 변경 후 계약을 취소하시면 최초 계약일 기준으로 환불 규정이 적용됩니다.']],
+    ['환불 규정은 어떻게 되나요?', ['계약일 당일 전액 입금이 원칙이며, 입금이 확인되면 예약이 확정됩니다.', ['예약 확정 후 7일 이내 취소 시 전액 환불','예식일 90일 전까지 취소 시 60% 환불','예식일 89일~61일 전 취소 시 50% 환불','예식일 60일 이내 취소 시 환불 불가'], '메인 스냅 업체가 없어 촬영이 어려운 경우와 촬영물에 대한 주관적인 불만으로는 환불이 불가합니다.']],
+    ['상담 가능한 시간은 언제인가요?', ['월요일부터 금요일, 오전 9시부터 저녁 9시까지 카카오톡 채널로 답변드립니다. 그 외 시간에 남겨 주신 메시지는 순서대로 답변드립니다.']]
+  ];
+  (function(){
+    var box = $('qa');
+    QA.forEach(function(item, i){
+      var d = document.createElement('details'), s = document.createElement('summary');
+      s.appendChild(el('span','q', String(i+1).padStart(2,'0'))); s.appendChild(el('span','', item[0])); s.appendChild(el('span','t','+'));
+      d.appendChild(s);
+      var a = el('div','a');
+      item[1].forEach(function(part){
+        if (Array.isArray(part)) { var ol = document.createElement('ol'); part.forEach(function(x){ ol.appendChild(el('li','',x)); }); a.appendChild(ol); }
+        else a.appendChild(el('p','',part));
+      });
+      d.appendChild(a); box.appendChild(d);
+    });
+  })();
+
+  var VIEWS = ['home','portfolio','product','qna'];
+  function closeMenu(){ $('menu').hidden = true; $('scrim').hidden = true; }
+  function show(){
+    var h = (location.hash || '#home').slice(1); if (VIEWS.indexOf(h) < 0) h = 'home';
+    VIEWS.forEach(function(v){ $('v-'+v).hidden = v !== h; });
+    if (h === 'portfolio' && album) { album = null; renderArtist(); }
+    closeMenu(); window.scrollTo(0,0);
+    document.title = h === 'home' ? 'Eunwol Snap' : 'Eunwol Snap · ' + ({portfolio:'Portfolio',product:'Product',qna:'Q&A'}[h]);
+  }
+  window.addEventListener('hashchange', show);
+  $('openMenu').addEventListener('click', function(){ $('menu').hidden = false; $('scrim').hidden = false; $('closeMenu').focus(); });
+  $('closeMenu').addEventListener('click', function(){ closeMenu(); $('openMenu').focus(); });
+  $('scrim').addEventListener('click', closeMenu);
+  Array.prototype.forEach.call(document.querySelectorAll('#menu a'), function(a){
+    a.addEventListener('click', function(){
+      if (a.dataset.artist){ current = a.dataset.artist; album = null; renderTabs(); renderArtist(); }
+      closeMenu();
+    });
+  });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeMenu(); });
+  $('lbX').addEventListener('click', closeLb); $('lbP').addEventListener('click', function(e){ e.stopPropagation(); stepLb(-1); }); $('lbN').addEventListener('click', function(e){ e.stopPropagation(); stepLb(1); });
+  $('lb').addEventListener('click', function(e){ if (e.target.id === 'lb') closeLb(); });
+  document.addEventListener('keydown', function(e){ if ($('lb').hidden) return; if (e.key==='Escape') closeLb(); if (e.key==='ArrowLeft') stepLb(-1); if (e.key==='ArrowRight') stepLb(1); });
+  var tx = null; $('lb').addEventListener('touchstart', function(e){ tx = e.touches[0].clientX; }, {passive:true});
+  $('lb').addEventListener('touchend', function(e){ if (tx===null) return; var dx = e.changedTouches[0].clientX - tx; if (Math.abs(dx) > 40) stepLb(dx < 0 ? 1 : -1); tx = null; });
+  renderTabs(); renderArtist(); show();
+})();
+</script>
+
+</body></html>
