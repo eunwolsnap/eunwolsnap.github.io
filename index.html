@@ -173,6 +173,10 @@ h2{font-size:clamp(44px,11vw,68px)}
 .btn:hover{background:var(--ink);color:var(--bg)}
 .cta{padding-block:48px 8px}
 
+.mini-b{display:block;font-size:12px;color:var(--muted);line-height:1.6}
+.ptabs{margin:0 0 28px;gap:6px 22px}
+.ptabs button{font-size:15px}
+@media (max-width:420px){.ptabs{gap:4px 16px}.ptabs button{font-size:14px}}
 /* q&a */
 .qa{border-top:1px solid var(--ink)}
 .qa details{border-bottom:1px solid var(--line)}
@@ -223,7 +227,15 @@ footer small{font-family:var(--en);font-size:12px;margin-top:10px}
 <aside class="drawer" id="menu" hidden aria-label="메뉴">
   <button class="icon-btn close" type="button" id="closeMenu" aria-label="메뉴 닫기"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
   <nav>
-    <a href="#product">Product</a>
+    <details>
+      <summary>Product<svg viewBox="0 0 24 24"><path d="M5 9l7 7 7-7"/></svg></summary>
+      <div class="subs">
+        <a href="#product" data-cat="wed">본식 서브스냅</a>
+        <a href="#product" data-cat="studio">스튜디오 서브스냅</a>
+        <a href="#product" data-cat="dol">돌 스냅</a>
+        <a href="#product" data-cat="film">DVD</a>
+      </div>
+    </details>
     <details>
       <summary>Portfolio<svg viewBox="0 0 24 24"><path d="M5 9l7 7 7-7"/></svg></summary>
       <div class="subs">
@@ -277,7 +289,13 @@ footer small{font-family:var(--en);font-size:12px;margin-top:10px}
     <h2>Product.</h2>
     <p class="lede">은월스냅 상품 안내</p>  </div>
   <div class="wrap">
-    <section class="product">
+    <div class="tabs ptabs" role="tablist" aria-label="상품 선택" id="ptabs">
+      <button type="button" role="tab" data-cat="wed" aria-selected="true">본식 서브스냅</button>
+      <button type="button" role="tab" data-cat="studio" aria-selected="false">스튜디오 서브스냅</button>
+      <button type="button" role="tab" data-cat="dol" aria-selected="false">돌 스냅</button>
+      <button type="button" role="tab" data-cat="film" aria-selected="false">DVD</button>
+    </div>
+    <section class="product" data-cat="wed">
       <h3>Wedding iPhone / Digicam Snap</h3>
       <p class="ko">본식 아이폰 스냅 / 디카 스냅</p>
       <p class="hint">작가를 누르면 상품 구성을 보실 수 있습니다.</p>
@@ -288,22 +306,29 @@ footer small{font-family:var(--en);font-size:12px;margin-top:10px}
       </ul>
     </section>
 
-    <section class="product">
+    <section class="product" data-cat="studio" hidden>
       <h3>Studio Sub Snap</h3>
       <p class="ko">스튜디오 서브 스냅</p>
       <p class="time">대표 작가 · 기본 2시간 촬영</p>
+      <p class="hint">*스튜디오 서브스냅은 스튜디오 측의 아이폰 스냅 작가 동행 허가가 필요합니다.</p>
       <ul class="rows tier">
         <li><details><summary><span class="n">스튜디오 서브 스냅<small>아이폰 스냅 · 디카 스냅</small></span><span class="p">300,000원<small>최대 할인 −8만원</small></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="pd"><p class="sub">상품 구성</p><ul class="inc"><li>대표 작가 촬영<span class="mini">대전 출장비 무료</span></li><li>기본 2시간 촬영</li><li>아이폰 사진·영상 원본 전체 (24시간 이내)</li><li>빈티지 디카 원본 전체 (14일 이내)</li><li>하이엔드 디카 원본 전체 (14일 이내)</li><li>작가 셀렉 프리미엄 보정본 30장 (14일 이내)</li><li>1분 하이라이트 영상 (14일 이내)</li></ul><div class="promise"><p>*은월은 사진의 퀄리티에 집중하기 위해 컷수 제한을 두지 않습니다.</p><p>*모든 보정은 대표 작가가 직접 합니다.</p></div><p class="sub">촬영 기기</p><ul class="inc"><li>아이폰 17pro / 아이폰 xs</li><li>캐논 빈티지 디카 / 리코 하이엔드 디카</li><li>후지 폴라로이드</li></ul><p class="sub">추가 옵션</p><ul class="rows small"><li><span class="n">초상권 비동의 시</span><span class="p">+20,000원</span></li><li><span class="n">촬영 1시간당 추가</span><span class="p">+50,000원</span></li><li><span class="n">프리미엄 보정본 5장 추가</span><span class="p">+30,000원</span></li><li><span class="n">빈티지 1분 하이라이트 영상</span><span class="p">+50,000원</span></li><li><span class="n">폴라로이드 5장 추가</span><span class="p">+30,000원</span></li><li><span class="n">출장비</span><span class="p">대전 무료 · 그 외 별도 안내</span></li></ul><p class="sub">할인 혜택</p><ul class="rows small"><li><span class="n">본식 아이폰 스냅 동시 계약 시</span><span class="p">−50,000원</span></li><li><span class="n">계약 후기 작성 시</span><span class="p">10,000원 페이백</span></li><li><span class="n">촬영 후기 작성 시</span><span class="p">20,000원 페이백</span></li></ul></div></details></li>
       </ul>
     </section>
 
-    <section class="product">
+    <section class="product" data-cat="film" hidden>
+      <h3>Wedding Film</h3>
+      <p class="ko">본식 영상 (DVD)</p>
+      <div class="empty"><span class="en">Coming soon</span>DVD 상품은 준비 중입니다.</div>
+    </section>
+
+    <section class="product" data-cat="dol" hidden>
       <h3>First Birthday Snap</h3>
       <p class="ko">돌스냅</p>
       <p class="time">연출 촬영, 원판, 돌잡이까지 (약 120분)</p>
       <ul class="rows tier">
         <li><details><summary><span class="n">메인 스냅<small>아이폰 스냅 · 디카 스냅</small></span><span class="p">400,000원<small>최대 할인 −3만원</small></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="pd"><p class="sub">상품 구성</p><ul class="inc"><li>메인 스냅 구성</li><li>연출 촬영 – 원판 – 돌잡이까지 (약 120분 촬영)</li><li>아이폰 사진·영상 원본 전체 (24시간 이내)</li><li>하이엔드 디카 원본 사진 전체 (7일 이내)</li><li>작가 셀렉 프리미엄 보정본 30장 (7일 이내)</li><li>1분 내외의 릴스 영상 (7일 이내)</li></ul><p class="sub">촬영 기기</p><ul class="inc"><li>아이폰 17pro / 리코 하이엔드 디카</li><li>후지 폴라로이드</li></ul><p class="sub">추가 옵션</p><ul class="rows small"><li><span class="n">초상권 비동의 시</span><span class="p">+20,000원</span></li><li><span class="n">폴라로이드 5장</span><span class="p">+30,000원</span></li><li><span class="n">고객 셀렉 보정본 10장</span><span class="p">+30,000원</span></li><li><span class="n">출장비</span><span class="p">별도 안내</span></li></ul><p class="sub">할인 혜택</p><ul class="rows small"><li><span class="n">계약 후기 작성 시</span><span class="p">10,000원 페이백</span></li><li><span class="n">촬영 후기 작성 시</span><span class="p">20,000원 페이백</span></li></ul></div></details></li>
-        <li><details><summary><span class="n">서브 스냅<small>아이폰 스냅 · 디카 스냅</small></span><span class="p">350,000원<small>최대 할인 −3만원</small></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="pd"><p class="sub">상품 구성</p><ul class="inc"><li>연출 촬영 – 원판 – 돌잡이까지 (약 120분 촬영)</li><li>아이폰 사진·영상 원본 전체 (24시간 이내)</li><li>하이엔드 디카 원본 사진 전체 (7일 이내)</li><li>작가 셀렉 프리미엄 보정본 25장 (7일 이내)</li><li>1분 내외의 릴스 영상 (7일 이내)</li></ul><p class="sub">촬영 기기</p><ul class="inc"><li>아이폰 17pro / 리코 하이엔드 디카</li><li>후지 폴라로이드</li></ul><p class="sub">추가 옵션</p><ul class="rows small"><li><span class="n">초상권 비동의 시</span><span class="p">+20,000원</span></li><li><span class="n">폴라로이드 5장</span><span class="p">+30,000원</span></li><li><span class="n">고객 셀렉 보정본 10장</span><span class="p">+30,000원</span></li><li><span class="n">출장비</span><span class="p">별도 안내</span></li></ul><p class="sub">할인 혜택</p><ul class="rows small"><li><span class="n">계약 후기 작성 시</span><span class="p">10,000원 페이백</span></li><li><span class="n">촬영 후기 작성 시</span><span class="p">20,000원 페이백</span></li></ul></div></details></li>
+        <li><details><summary><span class="n">서브 스냅<small>아이폰 스냅 · 디카 스냅</small></span><span class="p">350,000원<small>최대 할인 −3만원</small></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="pd"><p class="sub">상품 구성</p><ul class="inc"><li>서브 스냅 구성<span class="mini-b">*메인 작가님이 계셔야 촬영이 가능합니다.</span></li><li>연출 촬영 – 원판 – 돌잡이까지 (약 120분 촬영)</li><li>아이폰 사진·영상 원본 전체 (24시간 이내)</li><li>하이엔드 디카 원본 사진 전체 (7일 이내)</li><li>작가 셀렉 프리미엄 보정본 25장 (7일 이내)</li><li>1분 내외의 릴스 영상 (7일 이내)</li></ul><p class="sub">촬영 기기</p><ul class="inc"><li>아이폰 17pro / 리코 하이엔드 디카</li><li>후지 폴라로이드</li></ul><p class="sub">추가 옵션</p><ul class="rows small"><li><span class="n">초상권 비동의 시</span><span class="p">+20,000원</span></li><li><span class="n">폴라로이드 5장</span><span class="p">+30,000원</span></li><li><span class="n">고객 셀렉 보정본 10장</span><span class="p">+30,000원</span></li><li><span class="n">출장비</span><span class="p">별도 안내</span></li></ul><p class="sub">할인 혜택</p><ul class="rows small"><li><span class="n">계약 후기 작성 시</span><span class="p">10,000원 페이백</span></li><li><span class="n">촬영 후기 작성 시</span><span class="p">20,000원 페이백</span></li></ul></div></details></li>
       </ul>
     </section>
 
@@ -460,4 +485,15 @@ footer small{font-family:var(--en);font-size:12px;margin-top:10px}
 })();
 </script>
 
+<script>
+(function(){
+  var tabs=document.querySelectorAll('#ptabs button');
+  function show(cat){
+    Array.prototype.forEach.call(tabs,function(b){b.setAttribute('aria-selected',b.dataset.cat===cat?'true':'false');});
+    Array.prototype.forEach.call(document.querySelectorAll('#v-product .product'),function(sec){sec.hidden=sec.dataset.cat!==cat;});
+  }
+  Array.prototype.forEach.call(tabs,function(b){b.addEventListener('click',function(){show(b.dataset.cat);});});
+  Array.prototype.forEach.call(document.querySelectorAll('#menu a[data-cat]'),function(a){a.addEventListener('click',function(){show(a.dataset.cat);});});
+})();
+</script>
 </body></html>
